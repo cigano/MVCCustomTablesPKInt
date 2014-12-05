@@ -90,7 +90,8 @@ namespace WebApplication2.Models
         {
             base.OnModelCreating(modelBuilder); // This needs to go before the other rules!
 
-            modelBuilder.Entity<IdentityUser>().ToTable("usuarios");
+            modelBuilder.Entity<IdentityUser>().ToTable("usuarios").Property(p => p.Id).HasColumnName("id_usuario");
+			modelBuilder.Entity<ApplicationUser>().ToTable("usuarios").Property(p => p.Id).HasColumnName("id_usuario");    
             modelBuilder.Entity<IdentityRole>().ToTable("regras");
             modelBuilder.Entity<IdentityUserRole>().ToTable("usuarios_regras");
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
